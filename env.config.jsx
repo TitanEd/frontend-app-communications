@@ -47,7 +47,7 @@ const getPluginSlots = () => {
         {
           op: PLUGIN_OPERATIONS.Insert,
           widget: {
-            id: 'learning_header_plugin_slot',
+            id: 'learning_footer_plugin_slot',
             type: DIRECT_PLUGIN,
             priority: 1,
             RenderWidget: (props) => <></> ,
