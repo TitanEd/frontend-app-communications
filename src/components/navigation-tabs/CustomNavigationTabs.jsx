@@ -8,16 +8,16 @@ export default function NavigationTabs(props) {
   const { tabData } = props;
 
   return (
-    <div className="py-4 custom-nav-menu">
+    <div className="custom-nav-menu">
       <Nav variant="tabs" defaultActiveKey="Instructor">
         <Tabs>
-          {tabData && tabData.map(tab => (
-            <Nav.Item key={tab.tab_id}>
-              <Nav.Link eventKey={tab.title} href={tab.url}>
-                {tab.title}
-              </Nav.Link>
-            </Nav.Item>
-          ))}
+        {tabData && tabData.map(tab => (
+          <Nav.Item key={tab.tab_id}>
+            <Nav.Link eventKey={tab.title} href={tab.url}>
+              {tab.title}
+            </Nav.Link>
+          </Nav.Item>
+        ))}
         </Tabs>
       </Nav>
     </div>
