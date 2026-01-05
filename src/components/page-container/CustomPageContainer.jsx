@@ -9,7 +9,6 @@ import { Spinner } from '@openedx/paragon';
 import { getCohorts, getCourseHomeCourseMetadata } from './data/api';
 
 import './PageContainer.scss';
-import { PluginSlot } from '@openedx/frontend-plugin-framework';
 
 export const CourseMetadataContext = React.createContext();
 
@@ -58,38 +57,22 @@ export default function PageContainer(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   if (courseMetadata) {
-    const courseTitle =courseMetadata.title;
     return (
       <CourseMetadataContext.Provider value={courseMetadata}>
         <>
-          <PluginSlot
-            id="learning_header_plugin_slot"
-            pluginProps={{
-              courseTitle,
-            }}
-          >
-            <Header
-              className="learning-header"
-              courseOrg={courseMetadata.org}
-              courseNumber={courseMetadata.number}
-              courseTitle={courseMetadata.title}
-            />
-          </PluginSlot>
+          <Header
+            className="learning-header"
+            courseOrg={courseMetadata.org}
+            courseNumber={courseMetadata.number}
+            courseTitle={courseMetadata.title}
+          />
           <div className="pb-3 container">
             <main id="main-content">
               {children}
             </main>
           </div>
-          <PluginSlot
-            id="learning_footer_plugin_slot"
-            pluginProps={{
-              courseTitle,
-            }}
-          >
-            <FooterSlot />
-          </PluginSlot>
+          <FooterSlot />
         </>
       </CourseMetadataContext.Provider>
     );
