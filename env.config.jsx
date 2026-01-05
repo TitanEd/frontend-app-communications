@@ -50,7 +50,7 @@ const getPluginSlots = () => {
             id: 'learning_footer_plugin_slot',
             type: DIRECT_PLUGIN,
             priority: 1,
-            RenderWidget: (props) => <></> ,
+            RenderWidget: () => <></> ,
           },
         },
       ],

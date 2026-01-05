@@ -163,6 +163,34 @@
   }
 }
 
+.bulk-email-form-section{
+  div{
+    form{
+      .pgn__form-group{
+        .pgn__form-control-set{
+          align-items: center !important;
+          justify-content: center;
+          .pgn__form-checkbox {
+            align-items: center !important;
+            div{
+              .pgn__form-label {
+                margin-bottom: 0 !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.pgn__form-group{
+  .pgn__form-control-description{
+    padding-left: 0 !important;
+  }
+}
+.pgn__form-checkbox-input:checked, .pgn__form-radio-input:checked {
+  background-color: var(--bg-surface) !important;
+}
 @media (max-width: 768px) {
   .ca-breadcrumb {
     color: #b0b7c3;
