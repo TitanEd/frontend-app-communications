@@ -120,6 +120,7 @@
 .tox-button {
   background-color: var(--primary) !important;
   border-radius: 8px !important;
+  border-color: var(--primary) !important;
 }
 
 .tox-button--secondary {
@@ -139,10 +140,6 @@
 }
 
 // Fix TinyMCE dialog z-index to appear above sidebar
-.tox-dialog-wrap,
-.tox-tinymce-aux {
-  z-index: 1200 !important;
-}
 
 .tox-dialog {
   z-index: 1201 !important;
@@ -163,6 +160,61 @@
   }
 }
 
+.tox .tox-dialog__body-nav-item--active{
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+}
+
+.pgn__modal{
+  .pgn__modal-footer{
+    .pgn__action-row{
+      .pgn__modal-close-button{
+        color: var(--primary);
+      }
+    }
+  }
+}
+
+form{
+  .pgn__form-group{
+    div{
+      .btn-outline-brand{
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+    }
+  }
+}
+
+thead{
+  tr{
+    th{
+      span{
+        span{
+          color: var(--text-primary);
+        }
+      }
+    }
+  }
+}
+tbody{
+  .pgn__data-table-row{
+    td{
+      .btn-link{
+        color: var(--primary);
+      }
+    }
+  }
+}
+.alert-content{
+  .pgn__alert-message-wrapper{
+    .alert-message-content{
+      a{
+        color: var(--primary);
+      }
+    }
+  }
+}
 .bulk-email-form-section{
   div{
     form{
@@ -183,6 +235,13 @@
     }
   }
 }
+
+.bulk-email-form-section div form .pgn__form-group .pgn__form-control-set {
+    align-items: center !important;
+    justify-content: left;
+}
+
+
 .pgn__form-group{
   .pgn__form-control-description{
     padding-left: 0 !important;
