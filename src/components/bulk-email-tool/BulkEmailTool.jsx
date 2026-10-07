@@ -2,9 +2,11 @@ import React from 'react';
 
 import { useParams } from 'react-router-dom';
 
-import { ErrorPage } from '@edx/frontend-platform/react';
-import { Container } from '@openedx/paragon';
 import { FormattedMessage } from '@edx/frontend-platform/i18n';
+import { ErrorPage } from '@edx/frontend-platform/react';
+import { PluginSlot } from '@openedx/frontend-plugin-framework';
+import { Container } from '@openedx/paragon';
+
 import BulkEmailTaskManager from './bulk-email-task-manager/BulkEmailTaskManager';
 import NavigationTabs from '../navigation-tabs/NavigationTabs';
 import BulkEmailForm from './bulk-email-form';
@@ -16,38 +18,45 @@ export default function BulkEmailTool() {
   const { courseId } = useParams();
 
   return (
-    <CourseMetadataContext.Consumer>
-      {(courseMetadata) => (courseMetadata.originalUserIsStaff ? (
-        <>
-          <NavigationTabs courseId={courseId} tabData={courseMetadata.tabs} />
-          <BulkEmailProvider>
-            <Container size="md">
-              <BackToInstructor courseId={courseId} />
-              <div className="row pb-4.5">
-                <h1 className="text-primary-500">
-                  <FormattedMessage
-                    id="bulk.email.send.email.header"
-                    defaultMessage="Send an email"
-                    description="A label for email form"
+    <PluginSlot
+      id="communications_home_plugin_slot"
+      pluginProps={{
+
+      }}
+    >
+      <CourseMetadataContext.Consumer>
+        {(courseMetadata) => (courseMetadata.originalUserIsStaff ? (
+          <>
+            <NavigationTabs courseId={courseId} tabData={courseMetadata.tabs} />
+            <BulkEmailProvider>
+              <Container size="md">
+                <BackToInstructor courseId={courseId} />
+                <div className="row pb-4.5">
+                  <h1 className="text-primary-500">
+                    <FormattedMessage
+                      id="bulk.email.send.email.header"
+                      defaultMessage="Send an email"
+                      description="A label for email form"
+                    />
+                  </h1>
+                </div>
+                <div className="row">
+                  <BulkEmailForm
+                    courseId={courseId}
+                    cohorts={courseMetadata.cohorts}
+                    courseModes={courseMetadata.courseModes}
                   />
-                </h1>
-              </div>
-              <div className="row">
-                <BulkEmailForm
-                  courseId={courseId}
-                  cohorts={courseMetadata.cohorts}
-                  courseModes={courseMetadata.courseModes}
-                />
-              </div>
-              <div className="row py-5">
-                <BulkEmailTaskManager courseId={courseId} />
-              </div>
-            </Container>
-          </BulkEmailProvider>
-        </>
-      ) : (
-        <ErrorPage />
-      ))}
-    </CourseMetadataContext.Consumer>
+                </div>
+                <div className="row py-5">
+                  <BulkEmailTaskManager courseId={courseId} />
+                </div>
+              </Container>
+            </BulkEmailProvider>
+          </>
+        ) : (
+          <ErrorPage />
+        ))}
+      </CourseMetadataContext.Consumer>
+    </PluginSlot>
   );
 }
