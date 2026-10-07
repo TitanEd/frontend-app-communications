@@ -1,0 +1,271 @@
+/* Breadcrumb and Title styles */
+.ca-breadcrumb-bg {
+  width: 100%;
+  padding: 0.5rem 0 0 0;
+}
+
+.ca-breadcrumb-container {
+  margin: 0 auto;
+  padding: 1rem 0rem !important;
+}
+
+.ca-breadcrumb {
+  color: #b0b7c3;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.ca-breadcrumb .ca-breadcrumb-icon {
+  opacity: 0.7;
+
+  .custom-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+  }
+}
+
+.ca-breadcrumb .ca-breadcrumb-divider {
+  margin: 0 8px;
+}
+
+.ca-breadcrumb .ca-breadcrumb-current {
+  color: #6b7280;
+}
+
+.ca-title {
+  font-weight: 600;
+  font-size: 20px;
+  color: #22223b;
+}
+.course-tabs-navigation-wrapper {
+  max-width: 100vw;
+  background-color: #E6EDFF;
+  border-radius: 4px;
+  margin-bottom: 1.5rem !important;
+  .custom-nav-menu{
+    padding: 0.5rem 0.25rem ;
+    .nav-tabs{
+      width: 100%;
+      padding-left: 0.25rem;
+      border-bottom: 0 !important;
+      .nav{
+        width: 100%;
+      }
+      .nav-item{
+        .nav-link {
+          padding: 0.75rem 1rem !important;
+
+          &:hover{
+            border-radius: 0.5rem !important;
+            background-color: #f0eeed !important;
+            font-weight: 400;
+          }
+        }
+        .nav-link.active{
+          border-bottom: 0 !important;
+          background-color: #FFFFFF;
+          border-radius: 0.5rem;
+        }
+        a{
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+          color: var(--primary) !important;
+        }
+      }
+    }
+  }
+}
+
+
+.bulk-email-tool-wrapper {
+  flex-wrap: wrap;
+  max-width: 100vw;
+}
+
+.bulk-email-tool-content {
+  background: var(--bg-surface);
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  .ca-breadcrumb-container{
+    div{
+      a{
+        margin-bottom: 1rem !important;
+      }
+    }
+  }
+  div{
+    .pgn__card-body{
+      padding: 1rem 3rem !important;
+    }
+  }
+}
+
+[dir="ltr"] .ml-n4\.5, [dir="ltr"] .mx-n4\.5 {
+    margin-left: -1.5rem !important;
+}
+
+.ca-breadcrumb-container {
+  padding: 1rem 0;
+}
+
+
+.border-primary-500-2 {
+  border: 2px solid var(--primary) !important;
+}
+
+.text-primary-500 {
+  color: var(--primary) !important;
+}
+
+.tox-button {
+  background-color: var(--primary) !important;
+  border-radius: 8px !important;
+  border-color: var(--primary) !important;
+}
+
+.tox-button--secondary {
+  background-color: transparent !important;
+  color: var(--primary) !important;
+  border: 1px solid var(--primary) !important;
+}
+
+.tox-button--icon {
+  background-color: transparent !important;
+  color: var(--primary) !important;
+
+  &:hover {
+    background-color: var(--primary) !important;
+    color: white !important;
+  }
+}
+
+// Fix TinyMCE dialog z-index to appear above sidebar
+
+.tox-dialog {
+  z-index: 1201 !important;
+}
+
+.btn-brand {
+  border-radius: 8px !important;
+  background-color: var(--primary) !important;
+}
+
+.pgn__searchfield {
+  border: 1px solid #E0E0E0 !important;
+}
+
+.tox{
+  .tox-dialog-wrap__backdrop--opaque{
+    background-color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+.tox .tox-dialog__body-nav-item--active{
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+}
+
+.pgn__modal{
+  .pgn__modal-footer{
+    .pgn__action-row{
+      .pgn__modal-close-button{
+        color: var(--primary);
+      }
+    }
+  }
+}
+
+form{
+  .pgn__form-group{
+    div{
+      .btn-outline-brand{
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+    }
+  }
+}
+
+thead{
+  tr{
+    th{
+      span{
+        span{
+          color: var(--text-primary);
+        }
+      }
+    }
+  }
+}
+tbody{
+  .pgn__data-table-row{
+    td{
+      .btn-link{
+        color: var(--primary);
+      }
+    }
+  }
+}
+.alert-content{
+  .pgn__alert-message-wrapper{
+    .alert-message-content{
+      a{
+        color: var(--primary);
+      }
+    }
+  }
+}
+.bulk-email-form-section{
+  div{
+    form{
+      .pgn__form-group{
+        .pgn__form-control-set{
+          align-items: center !important;
+          justify-content: center;
+          .pgn__form-checkbox {
+            align-items: center !important;
+            div{
+              .pgn__form-label {
+                margin-bottom: 0 !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.bulk-email-form-section div form .pgn__form-group .pgn__form-control-set {
+    align-items: center !important;
+    justify-content: left;
+}
+
+
+.pgn__form-group{
+  .pgn__form-control-description{
+    padding-left: 0 !important;
+  }
+}
+.pgn__form-checkbox-input:checked, .pgn__form-radio-input:checked {
+  background-color: var(--bg-surface) !important;
+}
+@media (max-width: 768px) {
+  .ca-breadcrumb {
+    color: #b0b7c3;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .bulk-email-tool-content{
+    .ca-breadcrumb-container .mx-4{
+      margin-left: 1.5rem !important;
+      margin-right: 1rem !important;
+    }
+  }
+  .bulk-email-tool-content div .pgn__card-body{
+    padding: 1rem 1.5rem !important;
+  }
+  [dir="ltr"] .mx-4 {
+    margin-left: 0 !important; 
+  }
+}
