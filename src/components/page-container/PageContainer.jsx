@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 
 import { LearningHeader as Header } from '@edx/frontend-component-header';
 import { FooterSlot } from '@edx/frontend-component-footer';
-import { PluginSlot } from '@openedx/frontend-plugin-framework';
 import { Spinner } from '@openedx/paragon';
 
 import { getCohorts, getCourseHomeCourseMetadata } from './data/api';
@@ -59,36 +58,21 @@ export default function PageContainer(props) {
   }, []);
 
   if (courseMetadata) {
-    const courseTitle = courseMetadata.title;
     return (
       <CourseMetadataContext.Provider value={courseMetadata}>
         <>
-          <PluginSlot
-            id="learning_header_plugin_slot"
-            pluginProps={{
-              courseTitle,
-            }}
-          >
-            <Header
-              className="learning-header"
-              courseOrg={courseMetadata.org}
-              courseNumber={courseMetadata.number}
-              courseTitle={courseMetadata.title}
-            />
-          </PluginSlot>
+          <Header
+            className="learning-header"
+            courseOrg={courseMetadata.org}
+            courseNumber={courseMetadata.number}
+            courseTitle={courseMetadata.title}
+          />
           <div className="pb-3 container">
             <main id="main-content">
               {children}
             </main>
           </div>
-          <PluginSlot
-            id="learning_footer_plugin_slot"
-            pluginProps={{
-              courseTitle,
-            }}
-          >
-            <FooterSlot />
-          </PluginSlot>
+          <FooterSlot />
         </>
       </CourseMetadataContext.Provider>
     );

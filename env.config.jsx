@@ -1,62 +1,35 @@
 import React from 'react';
 
-
 import {
   DIRECT_PLUGIN,
   PLUGIN_OPERATIONS,
 } from '@openedx/frontend-plugin-framework';
 
-import CustomBulkEmailTool from './src/components/bulk-email-tool/CustomBulkEmailTool';
-import CustomCourseHeader from './src/components/CustomCourseHeader';
-
+import CustomLayout from './src/CustomLayout';
 
 const getPluginSlots = () => {
-  if (typeof window !== 'undefined' && localStorage.getItem('oldUI') === 'true') {
-    return {};
-  }
-
   return {
-    communications_home_plugin_slot: {
+    // Replaces the stock bulk email page (src/index.jsx) with the custom UI.
+    app_layout_plugin_slot: {
+      keepDefault: false,
       plugins: [
         {
-          op: PLUGIN_OPERATIONS.Insert,
-          widget: {
-            id: 'communications_home_plugin_slot',
-            type: DIRECT_PLUGIN,
-            priority: 1,
-            RenderWidget: (props) => <CustomBulkEmailTool />,
-          },
+          op: PLUGIN_OPERATIONS.Hide,
+          widgetId: 'default_contents',
         },
-      ],
-    },
-    learning_header_plugin_slot: {
-      plugins: [
         {
           op: PLUGIN_OPERATIONS.Insert,
           widget: {
-            id: 'learning_header_plugin_slot',
+            id: 'custom_app_layout',
             type: DIRECT_PLUGIN,
             priority: 1,
-            RenderWidget: (props) => <CustomCourseHeader {...props} />,
-          },
-        },
-      ],
-    },
-    learning_footer_plugin_slot: {
-      plugins: [
-        {
-          op: PLUGIN_OPERATIONS.Insert,
-          widget: {
-            id: 'learning_footer_plugin_slot',
-            type: DIRECT_PLUGIN,
-            priority: 1,
-            RenderWidget: () => <></> ,
+            RenderWidget: () => <CustomLayout />,
           },
         },
       ],
     },
   };
-}
+};
 
 // Load environment variables from .env file
 const config = {

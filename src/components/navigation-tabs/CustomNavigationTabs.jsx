@@ -1,25 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { useIntl } from '@edx/frontend-platform/i18n';
 
-import { Nav } from '@openedx/paragon';
 import Tabs from './Tabs';
+import messages from '../../messages';
 
 export default function NavigationTabs(props) {
   const { tabData } = props;
+  const intl = useIntl();
+
+  const isActiveTab = (tab) => {
+    const id = (tab.tab_id || '').toLowerCase();
+    const title = (tab.title || '').toLowerCase();
+    return id === 'instructor' || title === 'instructor';
+  };
 
   return (
-    <div className="custom-nav-menu">
-      <Nav variant="tabs" defaultActiveKey="Instructor">
-        <Tabs>
-          {tabData && tabData.map(tab => (
-            <Nav.Item key={tab.tab_id}>
-              <Nav.Link eventKey={tab.title} href={tab.url}>
-                {tab.title}
-              </Nav.Link>
-            </Nav.Item>
-          ))}
-        </Tabs>
-      </Nav>
+    <div id="courseTabsNavigation" className="mb-3 course-tabs-navigation">
+      <div className="container-xl">
+        <div className="nav-bar">
+          <div className="nav-menu">
+            <Tabs
+              className="nav-underline-tabs"
+              aria-label={intl.formatMessage(messages.courseMaterialNav)}
+            >
+              {tabData && tabData.map(tab => (
+                <a
+                  key={tab.tab_id}
+                  href={tab.url}
+                  className={classNames('nav-item flex-shrink-0 nav-link', {
+                    active: isActiveTab(tab),
+                  })}
+                >
+                  {tab.title}
+                </a>
+              ))}
+            </Tabs>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

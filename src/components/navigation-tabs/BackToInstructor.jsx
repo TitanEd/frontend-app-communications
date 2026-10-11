@@ -12,7 +12,7 @@ export default function BackToInstructor(props) {
   return (
     <Button
       variant="tertiary"
-      className="mb-4.5 ml-n4.5 text-primary-500"
+      className="mb-0 text-primary-500"
       href={`${getConfig().LMS_BASE_URL}/courses/${courseId}/instructor#view-course-info`}
     >
       <Icon
