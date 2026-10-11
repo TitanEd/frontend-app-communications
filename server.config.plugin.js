@@ -7,66 +7,37 @@ hooks.Filters.ENV_PATCHES.add_item(
 // Runtime plugin configuration injected by Tutor
 const { PLUGIN_OPERATIONS, DIRECT_PLUGIN } = await import('@openedx/frontend-plugin-framework');
 
-const { default: CustomBulkEmailTool } = await import('./src/components/bulk-email-tool/CustomBulkEmailTool');
-const { default: CustomCourseHeader } = await import('./src/components/CustomCourseHeader');
+const { default: CustomLayout } = await import('./src/CustomLayout');
 
 {% raw %}
 
-const getPluginSlots = () => { 
- if (typeof window !== 'undefined' && localStorage.getItem('oldUI') === 'true') { 
-   return {}; 
- } 
- 
- return {
-    communications_home_plugin_slot: {
+const getPluginSlots = () => {
+  return {
+    // Replaces the stock bulk email page (src/index.jsx) with the custom UI.
+    app_layout_plugin_slot: {
+      keepDefault: false,
       plugins: [
+        {
+          op: PLUGIN_OPERATIONS.Hide,
+          widgetId: 'default_contents',
+        },
         {
           op: PLUGIN_OPERATIONS.Insert,
           widget: {
-            id: 'communications_home_plugin_slot',
+            id: 'custom_app_layout',
             type: DIRECT_PLUGIN,
             priority: 1,
-            RenderWidget: () => <CustomBulkEmailTool />,
+            RenderWidget: () => <CustomLayout />,
           },
         },
       ],
     },
-
-    learning_header_plugin_slot: {
-      plugins: [
-        {
-          op: PLUGIN_OPERATIONS.Insert,
-          widget: {
-            id: 'learning_header_plugin_slot',
-            type: DIRECT_PLUGIN,
-            priority: 1,
-            RenderWidget: (props) => <CustomCourseHeader {...props} />,
-          },
-        },
-      ],
-    },
-
-    learning_footer_plugin_slot: {
-      plugins: [
-        {
-          op: PLUGIN_OPERATIONS.Insert,
-          widget: {
-            id: 'learning_footer_plugin_slot',
-            type: DIRECT_PLUGIN,
-            priority: 1,
-            RenderWidget: () => <></>,
-          },
-        },
-      ],
-    },
-  }
+  };
 };
 
+config.pluginSlots = getPluginSlots();
 
-// Load environment variables from .env file 
-config.pluginSlots = getPluginSlots(); 
- 
-{% endraw %} 
-""" 
-    )) 
- 
+{% endraw %}
+""",
+    )
+)

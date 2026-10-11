@@ -18,22 +18,14 @@ export default function BulkEmailTool() {
     <CourseMetadataContext.Consumer>
       {(courseMetadata) => (courseMetadata?.originalUserIsStaff ? (
         <>
-          <div className="course-tabs-navigation-wrapper">
-            <CustomNavigationTabs
-              courseId={courseId}
-              tabData={courseMetadata.tabs}
-            />
-          </div>
+          <CustomNavigationTabs tabData={courseMetadata.tabs} />
           <div className="bulk-email-tool-wrapper">
             <div className="bulk-email-tool-content">
               <BulkEmailProvider>
-                {/* Back link + Title row */}
-                <div className="ca-breadcrumb-container mx-4">
-                  <div className="mx-4">
-                    <BackToInstructor courseId={courseId} />
-                  </div>
-
-                  <h1 className="ca-title mx-4">
+                {/* Back link + title — flush to content column (no mx-* second gutter). */}
+                <div className="bulk-email-tool-heading">
+                  <BackToInstructor courseId={courseId} />
+                  <h1 className="ca-title">
                     <FormattedMessage
                       id="bulk.email.send.email.header"
                       defaultMessage="Send an email"
@@ -42,10 +34,8 @@ export default function BulkEmailTool() {
                   </h1>
                 </div>
 
-                {/* Main card-like container - full width with nice rounding */}
                 <Card className="bulk-email-main-card raised-card border-0 shadow-sm">
-                  <Card.Body className="p-4 p-lg-5">
-                    {/* Form section */}
+                  <Card.Body className="p-3 p-md-4">
                     <div className="bulk-email-form-section mb-5">
                       <BulkEmailForm
                         courseId={courseId}
@@ -54,7 +44,6 @@ export default function BulkEmailTool() {
                       />
                     </div>
 
-                    {/* Task manager section */}
                     <div className="bulk-email-tasks-section pt-5 border-top">
                       <h2 className="h4 mb-4 text-primary-500">
                         <FormattedMessage

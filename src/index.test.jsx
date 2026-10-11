@@ -32,18 +32,8 @@ jest.mock('@edx/frontend-platform', () => ({
   ensureConfig: jest.fn(),
 }));
 
-jest.mock('@edx/frontend-platform/i18n', () => ({
-  getMessages: () => ({}),
-  IntlProvider: 'IntlProvider',
-}));
-
-jest.mock('titaned-frontend-library', () => ({
-  dynamicTheme: jest.fn(),
-}));
-
 jest.mock('./components/bulk-email-tool/BulkEmailTool', () => 'Bulk Email Tool');
 jest.mock('./components/page-container/PageContainer', () => 'Page Container');
-jest.mock('./Layout', () => 'Layout');
 
 describe('app registry', () => {
   let getElement;
