@@ -331,7 +331,7 @@ function BulkEmailForm(props) {
               'border-top pt-2': isScheduled,
             })}
           >
-            {editor.editMode && <Button className="ml-2" variant="outline-brand" onClick={() => dispatch(clearEditor())}>Cancel</Button>}
+            {editor.editMode && <Button className="ml-2" variant="outline-brand" onClick={() => dispatch(clearEditor())}>{intl.formatMessage(messages.bulkEmailFormCancelEdit)}</Button>}
             <StatefulButton
               className="send-email-btn"
               variant="primary"

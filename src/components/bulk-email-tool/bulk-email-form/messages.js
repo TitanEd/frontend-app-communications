@@ -1,6 +1,11 @@
 import { defineMessages } from '@edx/frontend-platform/i18n';
 
 const messages = defineMessages({
+  bulkEmailFormCancelEdit: {
+    id: 'bulk.email.form.cancelEdit',
+    defaultMessage: 'Cancel',
+    description: 'Button that leaves the editing of a scheduled email without saving',
+  },
   /* BulkEmailForm.jsx Messages */
   bulkEmailSubmitButtonDefault: {
     id: 'bulk.email.submit.button.default',
