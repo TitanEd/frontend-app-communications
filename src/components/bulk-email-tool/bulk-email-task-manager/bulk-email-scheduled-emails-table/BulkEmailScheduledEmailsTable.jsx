@@ -15,6 +15,7 @@ import { useParams } from 'react-router-dom';
 import { BulkEmailContext } from '../../bulk-email-context';
 import { deleteScheduledEmailThunk, getScheduledBulkEmailThunk } from './data/thunks';
 import messages from './messages';
+import CustomTableParts from './CustomTableParts';
 import ViewEmailModal from '../ViewEmailModal';
 import { copyToEditor } from '../../bulk-email-form/data/actions';
 import TaskAlertModal from '../../task-alert-modal';
@@ -171,16 +172,21 @@ function BulkEmailScheduledEmailsTable() {
           additionalColumns={[
             {
               id: 'action',
-              Header: 'Action',
+              Header: intl.formatMessage(messages.bulkEmailScheduledEmailsTableAction),
               Cell: ({
                 row, state, page, previousPage,
               }) => (
                 <>
-                  <IconButton src={Visibility} iconAs={Icon} alt="View" onClick={() => handleViewEmail(row)} />
+                  <IconButton
+                    src={Visibility}
+                    iconAs={Icon}
+                    alt={intl.formatMessage(messages.bulkEmailScheduledEmailsTableView)}
+                    onClick={() => handleViewEmail(row)}
+                  />
                   <IconButton
                     src={Delete}
                     iconAs={Icon}
-                    alt="Delete"
+                    alt={intl.formatMessage(messages.bulkEmailScheduledEmailsTableDelete)}
                     onClick={() => {
                       setCurrentTask({
                         row, pageIndex: state.pageIndex, page, previousPage,
@@ -188,12 +194,19 @@ function BulkEmailScheduledEmailsTable() {
                       openConfirmModal();
                     }}
                   />
-                  <IconButton src={Edit} iconAs={Icon} alt="Edit" onClick={() => handleEditEmail(row)} />
+                  <IconButton
+                    src={Edit}
+                    iconAs={Icon}
+                    alt={intl.formatMessage(messages.bulkEmailScheduledEmailsTableEdit)}
+                    onClick={() => handleEditEmail(row)}
+                  />
                 </>
               ),
             },
           ]}
-        />
+        >
+          <CustomTableParts />
+        </DataTable>
       </div>
     </>
   );

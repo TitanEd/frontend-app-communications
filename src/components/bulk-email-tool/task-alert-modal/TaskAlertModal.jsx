@@ -1,20 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ActionRow, AlertModal, Button } from '@openedx/paragon';
-import { FormattedMessage, useIntl } from '@edx/frontend-platform/i18n';
+import { FormattedMessage, defineMessages, useIntl } from '@edx/frontend-platform/i18n';
 
 function TaskAlertModal(props) {
   const {
     isOpen, close, alertMessage,
   } = props;
   const intl = useIntl();
-  const messages = {
+  // defineMessages: the extraction of translatable strings only finds messages declared with it.
+  const messages = defineMessages({
     taskAlertTitle: {
       id: 'bulk.email.task.alert.title',
       defaultMessage: 'Caution',
       description: 'Title in the header of the alert',
     },
-  };
+  });
   return (
     <AlertModal
       title={intl.formatMessage(messages.taskAlertTitle)}

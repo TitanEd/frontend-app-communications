@@ -11,12 +11,16 @@
 }
 
 @mixin tels-custom-course-tabs-breakout-in-gutter {
-  width: calc(100% + var(--pgn-spacing-grid-gutter-width));
-  max-width: none;
-  margin-left: calc(var(--pgn-spacing-grid-gutter-width) * -0.5);
-  margin-right: calc(var(--pgn-spacing-grid-gutter-width) * -0.5);
+  // Stay inside the content column (as in the brand copy of this file): the old gutter
+  // breakout (100% + gutter, negative margins) pushed the bar past the right edge.
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
   padding-left: calc(var(--pgn-spacing-grid-gutter-width) * 0.5);
   padding-right: calc(var(--pgn-spacing-grid-gutter-width) * 0.5);
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 @mixin tels-custom-course-tabs-inner-container-xl {

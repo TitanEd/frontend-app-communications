@@ -38,6 +38,7 @@ pull_translations:
 	            translations/frontend-component-footer/src/i18n/messages:frontend-component-footer \
 	            translations/paragon/src/i18n/messages:paragon \
 	            translations/frontend-platform/src/i18n/messages:frontend-platform \
+	            translations/frontend-plugin-notifications/src/i18n/messages:frontend-plugin-notifications \
 	            translations/frontend-app-communications/src/i18n/messages:frontend-app-communications
 
 	$(intl_imports) frontend-component-header frontend-component-footer paragon frontend-platform frontend-app-communications
