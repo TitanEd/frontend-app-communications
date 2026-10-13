@@ -2,7 +2,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 import { Spinner } from '@openedx/paragon';
-import { Home, LmsBook } from '@openedx/paragon/icons';
+import {
+  Assignment, EmojiEvents, Home, LmsBook,
+} from '@openedx/paragon/icons';
 import { useLocation } from 'react-router-dom';
 // Installed from package.json. Run npm install before lint/build if this stays unresolved.
 // eslint-disable-next-line import/no-unresolved
@@ -17,6 +19,7 @@ import CustomBulkEmailTool from './components/bulk-email-tool/CustomBulkEmailToo
 import CustomPageContainer from './components/page-container/CustomPageContainer';
 import customGetUserMenuItems from './utils/customGetUserMenuItems';
 import getLearnerDashboardUrl from './utils/getLearnerDashboardUrl';
+import { useSiteFeatures, withSiteFeatures } from './useSiteFeatures';
 import messages from './messages';
 import HeaderExtras, { headerUser } from './customHeaderExtras';
 
@@ -63,7 +66,9 @@ const CustomLayout = () => {
   const [userMenuItemsFromAPI, setUserMenuItemsFromAPI] = useState({});
 
   // Sidebar items open pages of the learner dashboard MFE.
-  const sidebarItems = [
+  // "My Assessments" and "My Achievements" are features a site may not have (useSiteFeatures.js).
+  const siteFeatures = useSiteFeatures();
+  const sidebarItems = withSiteFeatures([
     {
       label: intl.formatMessage(messages.sidebarDashboardTitle),
       path: '/',
@@ -74,7 +79,19 @@ const CustomLayout = () => {
       path: '/my-courses',
       icon: <LmsBook />,
     },
-  ];
+    {
+      label: intl.formatMessage(messages.sidebarMyAssessmentsTitle),
+      path: '/assessments',
+      feature: 'assessment_center',
+      icon: <Assignment />,
+    },
+    {
+      label: intl.formatMessage(messages.sidebarMyAchievementsTitle),
+      path: '/achievements',
+      feature: 'gamification',
+      icon: <EmojiEvents />,
+    },
+  ], siteFeatures);
 
   useEffect(() => {
     document.documentElement.classList.add(CUSTOM_UI_CLASS);
