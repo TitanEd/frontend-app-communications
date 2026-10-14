@@ -41,7 +41,7 @@ pull_translations:
 	            translations/frontend-plugin-notifications/src/i18n/messages:frontend-plugin-notifications \
 	            translations/frontend-app-communications/src/i18n/messages:frontend-app-communications
 
-	$(intl_imports) frontend-component-header frontend-component-footer paragon frontend-platform frontend-app-communications
+	$(intl_imports) frontend-plugin-notifications frontend-component-header frontend-component-footer paragon frontend-platform frontend-app-communications
 
 # This target is used by Travis.
 validate-no-uncommitted-package-lock-changes:
